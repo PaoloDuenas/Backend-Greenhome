@@ -1,5 +1,6 @@
 name: Deploy to GHCR
 
+
 on:
   push:
     branches:
@@ -41,9 +42,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
       
-      # Este paso avisará a Render más adelante.
-      # Por ahora fallará o no hará nada porque no hemos configurado el secreto, 
-      # pero déjalo puesto para que esté listo.
+    
       - name: Trigger Render Deploy
         if: success()
         uses: fjogeleit/http-request-action@v1
@@ -51,4 +50,4 @@ jobs:
           url: ${{ secrets.RENDER_DEPLOY_HOOK }}
           method: 'GET'
           timeout: 30000
-          ignore_error: true # Ignora error si aún no configuramos Render
+          ignore_error: true 
