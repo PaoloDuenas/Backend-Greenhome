@@ -1,6 +1,5 @@
 name: Deploy to GHCR
 
-# Se activa cuando haces push a la rama 'main'
 on:
   push:
     branches:
