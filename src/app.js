@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.send("¡API Actualizada con DevOps por Paolo! 🎉");
+  res.send("¡API Actualizada con DevOps por Paolo!");
 });
 
 // Usar las rutas de la API
