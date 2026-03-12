@@ -8,15 +8,19 @@ const readingRoutes = require('./routes/readingRoutes');
 // Al ejecutar desde la raíz, dotenv lo encontrará automáticamente.
 dotenv.config();
 
-// Conectar a la base de datos
-connectDB();
+// Conectar a la base de datos (sin bloquear el inicio del servidor para depurar)
+connectDB().catch(err => console.error("Error inicial de DB:", err));
 
 const app = express();
 // Corregimos el operador para asignar el puerto por defecto
 const PORT = process.env.PORT || 3000;
 
-//usamos CORS (Permitimos todo para depurar)
-app.use(cors());
+//usamos CORS (Permitimos todo y habilitamos preflight)
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+app.options('*', cors()); // Habilitar preflight para todas las rutas
 
 // Middleware para parsear JSON
 app.use(express.json());
