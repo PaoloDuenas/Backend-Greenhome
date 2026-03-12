@@ -15,12 +15,12 @@ const app = express();
 // Corregimos el operador para asignar el puerto por defecto
 const PORT = process.env.PORT || 3000;
 
-//usamos CORS (Permitimos todo y habilitamos preflight)
+//usamos CORS
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: 'https://greenhomeapp.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.options('/:path*', cors()); // Habilitar preflight para todas las rutas (Sintaxis Express 5 corregida)
 
 // Middleware para parsear JSON
 app.use(express.json());
