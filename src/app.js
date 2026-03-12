@@ -15,19 +15,19 @@ const app = express();
 // Corregimos el operador para asignar el puerto por defecto
 const PORT = process.env.PORT || 3000;
 
-//usamos CORS
-app.use(cors({
-  origin: 'https://greenhomeapp.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+//usamos CORS (Permitimos todo para depurar)
+app.use(cors());
 
 // Middleware para parsear JSON
 app.use(express.json());
 
 // Ruta de prueba
 app.get('/', (req, res) => {
-  res.send("¡API Actualizada con DevOps por Paolo! demostracion");
+  res.status(200).send("¡API de Greenhome activa! Versión depuración.");
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', time: new Date() });
 });
 
 // Usar las rutas de la API
