@@ -16,7 +16,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //usamos CORS
-app.use(cors());
+app.use(cors({
+  origin: 'https://greenhomeapp.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Middleware para parsear JSON
 app.use(express.json());
