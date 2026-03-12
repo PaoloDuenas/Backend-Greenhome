@@ -20,7 +20,7 @@ app.use(cors({
   origin: true,
   credentials: true
 }));
-app.options('*', cors()); // Habilitar preflight para todas las rutas
+app.options('(.*)', cors()); // Habilitar preflight para todas las rutas (Sintaxis Express 5)
 
 // Middleware para parsear JSON
 app.use(express.json());
